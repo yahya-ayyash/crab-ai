@@ -948,6 +948,30 @@
             speechSynthesis.onvoiceschanged = loadVoices;
         }
 
+        // Voice Greeting on Page Load
+        window.addEventListener('DOMContentLoaded', () => {
+            const username = "{{ session.get('username', 'User') }}";
+            const greeting = `Hey ${username}! I am CRAB. I was developed by Yahya. To know more about Yahya, ask me his portfolio.`;
+
+            // Wait a bit for voices and system to be ready
+            setTimeout(() => {
+                if (voices.length === 0) voices = window.speechSynthesis.getVoices();
+                const utterance = new SpeechSynthesisUtterance(greeting);
+
+                // Prioritize Premium Indian English Voices
+                const targetVoice = voices.find(v => v.name.includes('Heera')) ||
+                    voices.find(v => v.name.includes('Google India English')) ||
+                    voices.find(v => v.name.includes('Ravi')) ||
+                    voices.find(v => v.lang === 'en-IN') ||
+                    voices.find(v => v.lang.startsWith('en'));
+
+                if (targetVoice) utterance.voice = targetVoice;
+                utterance.pitch = 1.0;
+                utterance.rate = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }, 1000);
+        });
+
         function speakText(btn, text, lang = 'en-IN') {
             const isSpeaking = btn.classList.contains('speaking');
 
