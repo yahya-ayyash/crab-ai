@@ -1,0 +1,5 @@
+Flask
+wikipedia
+werkzeug
+gunicorn
+deep-translator
