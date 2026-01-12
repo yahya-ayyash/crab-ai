@@ -79,6 +79,10 @@ def landing():
 def about():
     return render_template("about.html")
 
+@app.route("/portfolio")
+def portfolio():
+    return render_template("portfolio.html")
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
