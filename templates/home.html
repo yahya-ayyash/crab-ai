@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRAB | AI</title>
+    <title>CRAB | Smart Voice Assistant</title>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
@@ -322,33 +322,89 @@
         }
 
         /* Responsive Design */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
-                margin-top: 1rem;
+            body {
+                overflow-x: hidden;
             }
 
-            p.subtitle {
-                font-size: 1.1rem;
-                margin-bottom: 2.5rem;
+            .blob {
+                width: 300px;
+                height: 300px;
+                opacity: 0.3;
             }
 
             header {
-                padding: 1.2rem 5%;
-                flex-direction: row;
-                justify-content: space-between;
+                padding: 1rem 1.5rem;
                 gap: 1rem;
             }
 
             .logo {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
+            }
+
+            .logo img {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+            }
+
+            nav {
+                gap: 8px !important;
+            }
+
+            .nav-link {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+
+            .nav-btn-primary,
+            .nav-btn-danger {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            main {
+                padding: 3rem 20px;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+                margin-top: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            p.subtitle {
+                font-size: 1rem;
+                margin-bottom: 2.5rem;
+                padding: 0 10px;
             }
 
             .cta-button {
-                padding: 18px 40px;
-                font-size: 1.15rem;
-                width: 80%;
+                padding: 16px 36px;
+                font-size: 1.1rem;
+                width: 100%;
+                max-width: 320px;
                 justify-content: center;
+            }
+
+            .creator-badge {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo span {
+                display: none;
+                /* Hide text if extremely tight, or keep if brief */
+            }
+
+            h1 {
+                font-size: 2.4rem;
             }
         }
     </style>
@@ -401,4 +457,3 @@
 </body>
 
 </html>
-
