@@ -892,18 +892,20 @@
 
             .sidebar {
                 position: fixed;
-                left: 0;
+                left: auto;
+                right: 0;
                 top: 0;
                 height: 100%;
                 z-index: 1000;
                 width: 300px;
-                box-shadow: 20px 0 50px rgba(0, 0, 0, 0.5);
+                background: rgba(15, 23, 42, 0.98);
+                box-shadow: -20px 0 50px rgba(0, 0, 0, 0.5);
                 transform: translateX(0);
                 transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
             .sidebar.closed {
-                transform: translateX(-100%);
+                transform: translateX(100%);
                 opacity: 1;
                 pointer-events: none;
                 display: flex;
@@ -937,6 +939,9 @@
                 padding: 15px;
                 font-size: 1rem;
                 min-height: 50px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
 
@@ -1306,7 +1311,9 @@
 
             let targetVoice = null;
             if (lang === 'ta-IN') {
-                targetVoice = voices.find(v => v.lang === 'ta-IN' || v.lang.startsWith('ta'));
+                // Try Ravi first match user request, then Tamil
+                targetVoice = voices.find(v => v.name.includes('Ravi')) ||
+                    voices.find(v => v.lang === 'ta-IN' || v.lang.startsWith('ta'));
             } else {
                 // Use Ravi voice specifically as requested
                 targetVoice = voices.find(v => v.name.includes('Ravi')) ||
