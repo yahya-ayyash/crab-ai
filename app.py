@@ -340,6 +340,9 @@ def run():
                     print(f"DEBUG: g4f {p_name} failed: {prov_error}")
                     continue
         
+        if result:
+            result = result.replace("Want best roleplay experience? https://llmplayground.net", "").strip()
+
         if not ai_success:
             result = "I'm having trouble connecting to the AI service right now. Please try again in a moment."
 
