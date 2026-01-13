@@ -341,7 +341,10 @@ def run():
                     continue
         
         if result:
-            result = result.replace("Want best roleplay experience? https://llmplayground.net", "").strip()
+            # Filter out promotional lines from the AI response
+            lines = result.split('\n')
+            filtered_lines = [line for line in lines if "llmplayground.net" not in line]
+            result = '\n'.join(filtered_lines).strip()
 
         if not ai_success:
             result = "I'm having trouble connecting to the AI service right now. Please try again in a moment."
